@@ -1,0 +1,30 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    margin: 50px;
+}
+
+.uudised {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.uudis {
+    width: 250px;
+    box-shadow: 2px 2px 8px #888888;
+    padding: 30px;  
+}
+
+.kokkuvote {
+    margin-bottom: 10px;
+}
+
+.sisu {
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 500px;
+}
