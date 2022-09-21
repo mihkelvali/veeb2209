@@ -1,0 +1,35 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url("taust.jpeg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+#uudised {
+    width: 800px;
+    background-color: rgba(242, 242, 242, 0.75);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    padding-top: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 50px;
+}
+
+.uudis {
+    margin-top: 50px;
+}
+
+.autor-kuupaev {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: rgb(1, 58, 1);
+}
+
+.tekst {
+    text-align: justify;
+}
