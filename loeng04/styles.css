@@ -1,0 +1,43 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgoldenrodyellow;
+    padding: 8px;
+}
+
+header>a>img,
+header>div {
+    width: 82px;
+}
+
+body>nav {
+    padding: 15px;
+    background-color: thistle;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+main {
+    padding: 30px;
+    background-color: rgb(189, 216, 208);
+}
+
+main>p,
+main>img {
+    width: 60vw;
+}
+
+footer {
+    padding: 20px;
+    background-color: lavender;
+}
+
+footer>nav {
+    display: flex;
+    gap: 10px;
+}
