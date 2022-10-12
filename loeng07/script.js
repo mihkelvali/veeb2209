@@ -1,10 +1,7 @@
-let astendaja = 0;
-
 console.log('alustame astendamisega');
 
-while (astendaja < 100) {
-    console.log('2 astmes ' + astendaja + ' võrdub ' + 2 ** astendaja);
-    astendaja = astendaja + 1;
+for (let number = 0; number < 10; number++) {
+    console.log('2 astmes ' + number + ' võrdub ' + 2 ** number);
 }
 
 console.log('lõpetame astendamisega');
