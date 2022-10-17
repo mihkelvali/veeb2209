@@ -13,9 +13,14 @@ function toggleIsDone(id) {
     renderTodos();
 }
 
-function deleteTodo(id) {
-    console.log(id);
-    // todo kustutatakse ja list renderdatakse uuesti
+function deleteTodo(event, id) {
+    event.stopPropagation();
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id == id) {
+            todos.splice(i, 1);
+        }
+    }
+    renderTodos();
 }
 
 function renderTodos() {
@@ -31,12 +36,10 @@ function renderTodos() {
             onclick="toggleIsDone(${todos[i].id})"
         >
             ${todos[i].text}
-            <span onclick="deleteTodo(${todos[i].id})">[x]</span>
+            <span onclick="deleteTodo(event, ${todos[i].id})">[x]</span>
         </div>`
     }
-    console.log(todos);
 }
-
 
 inputElement.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
