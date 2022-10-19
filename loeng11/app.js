@@ -8,7 +8,11 @@ const server = http.createServer((req, res) => {
     const queryData = url.parse(req.url, true).query;
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello Mihkel');
+    if (queryData.nimi) {
+        res.end(`Tere, ${queryData.nimi}!`);
+        return
+    }
+    res.end('Tere maailm!')
 });
 
 server.listen(port, hostname, () => {
