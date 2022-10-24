@@ -1,6 +1,6 @@
 let vastuseElement = document.querySelector('.vastus');
 
-let liidetavad = [];
+let tehe = [];
 let viimatiVajutatiOperaatorit = false;
 
 const vajutatiNuppu = async (nupp) => {
@@ -14,30 +14,56 @@ const vajutatiNuppu = async (nupp) => {
     }
     if (nupp === 'AC') {
         vastuseElement.innerHTML = 0;
-        liidetavad = [];
+        tehe = [];
         viimatiVajutatiOperaatorit = false;
     }
-    if (nupp === '+') {
-        liidetavad.push(vastuseElement.innerHTML);
+    if (kasOnOperaator(nupp) && kasViimaneElementOnOperaator()) {
         viimatiVajutatiOperaatorit = true;
-        // märgiksime liidetava üles
-        // järgmine number alustaks uut numbrit
+        return;
+    }
+    if (kasOnOperaator(nupp)) {
+        if (!kasViimaneElementOnOperaator()) {
+            tehe.push(vastuseElement.innerHTML);
+        }
+        tehe.push(nupp);
+        viimatiVajutatiOperaatorit = true;
     }
     if (nupp === '=') {
-        liidetavad.push(vastuseElement.innerHTML);
+        tehe.push(vastuseElement.innerHTML);
         viimatiVajutatiOperaatorit = true;
-        const vastusJson = await fetch('http://localhost:3000/liida', {
+        const vastusJson = await fetch('http://localhost:3000/arvuta', {
             method: 'POST',
             credentials: 'same-origin',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(liidetavad)
+            body: JSON.stringify(tehe)
         })
         const vastus = await vastusJson.json();
+        tehe = [String(vastus.vastus)]
         vastuseElement.innerHTML = vastus.vastus;
     }
+    console.log(tehe);
 
-    // kui +-/* -> märgime operaatori kuskile üles ja järgmine number teeb vastuse tühjaks
+}
 
+const kasViimaneElementOnOperaator = () => {
+    if (tehe.at(-1) === '+' ||
+        tehe.at(-1) === '-' ||
+        tehe.at(-1) === 'x' ||
+        tehe.at(-1) === '/') {
+        return true;
+    }
+    return false;
+}
+
+const kasOnOperaator = (nupp) => {
+    if (nupp === '+' ||
+        nupp === '-' ||
+        nupp === 'x' ||
+        nupp === '/'
+    ) {
+        return true;
+    }
+    return false;
 }
 
 document.addEventListener("keypress", function onEvent(event) {
